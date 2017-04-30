@@ -11,18 +11,24 @@ import android.widget.Button;
 
 import com.ramos.fredy.goschool.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DriverSignUpActivity extends AppCompatActivity {
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.driver_register_button)
     Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_sign_up);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        registerButton = (Button) findViewById(R.id.driver_register_button);
+        ButterKnife.bind(this);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
