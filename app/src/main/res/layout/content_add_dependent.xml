@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.ramos.fredy.goschool.activities.AddDependentActivity"
+    tools:showIn="@layout/activity_add_dependent">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dependent_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:hint="Nombre">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tie_dependent_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dependent_last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/til_dependent_name"
+        android:hint="Last name">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tie_dependet_last_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dependent_photo"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/til_dependent_last_name"
+        android:hint="Photo">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tie_dependent_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_dependent_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/til_dependent_last_name"
+        android:layout_toRightOf="@+id/til_dependent_photo"
+        android:text="Tomar"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dependent_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/til_dependent_photo"
+        android:hint="Birthday">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tie_dependent_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dependent_home_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/til_dependent_birthday"
+        android:hint="Address">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tie_dependent_home_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_dependent_location"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/til_dependent_home_address"
+        android:hint="Home Location">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tie_dependent_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_dependent_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/til_dependent_home_address"
+        android:layout_toRightOf="@+id/til_dependent_location"
+        android:text="Ubicar"/>
+
+
+
+</RelativeLayout>

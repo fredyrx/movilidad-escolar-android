@@ -4,4 +4,6 @@
     <string name="title_activity_client_sign_up">Client SignUp</string>
     <string name="title_activity_driver_sign_up">Driver SignUp</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_add_dependent">AddDependentActivity</string>
+    <string name="title_activity_dependent_location">Dependent Location</string>
 </resources>
