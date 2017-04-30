@@ -26,6 +26,7 @@
     <include layout="@layout/content_login" />
 
     <Button
+        android:id="@+id/client_sign_up_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Client Sign Up"
@@ -33,6 +34,7 @@
         android:layout_marginRight="15dp"/>
 
     <Button
+        android:id="@+id/driver_sign_up_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Driver Sign Up"
