@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Go School</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_client_sign_up">Client SignUp</string>
+    <string name="title_activity_driver_sign_up">Driver SignUp</string>
+    <string name="title_activity_login">Login</string>
 </resources>
