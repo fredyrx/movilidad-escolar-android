@@ -16,6 +16,10 @@ public class LocationSelectedEvent {
         this.latLng = latLng;
     }
 
+    public LatLng getLatLng() {
+        return latLng;
+    }
+
     public String getLocationToString() {
         return String.format(Locale.getDefault(), "%s; %s", latLng.latitude, latLng.longitude);
     }

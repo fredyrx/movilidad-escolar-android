@@ -21,9 +21,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.model.LatLng;
 import com.ramos.fredy.goschool.R;
 import com.ramos.fredy.goschool.bus.LocationSelectedEvent;
 import com.ramos.fredy.goschool.dialog.DateDialog;
+import com.ramos.fredy.goschool.model.AddDependent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -60,6 +62,7 @@ public class AddDependentActivity extends AppCompatActivity implements DatePicke
     static final int REQUEST_TAKE_PHOTO = 1;
 
     private String mCurrentPhotoPath;
+    private LatLng mLatLngSelected;
 
 
     @Override
@@ -102,6 +105,7 @@ public class AddDependentActivity extends AppCompatActivity implements DatePicke
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onSelectedLocationEvent(LocationSelectedEvent event) {
         event = EventBus.getDefault().removeStickyEvent(LocationSelectedEvent.class);
+        mLatLngSelected = event.getLatLng();
         mTieLocation.setText(event.getLocationToString());
     }
 
@@ -169,7 +173,22 @@ public class AddDependentActivity extends AppCompatActivity implements DatePicke
     }
 
     private void saveDependent() {
+        AddDependent addDependent = new AddDependent();
+        addDependent.setName(mTieName.toString().trim());
+        addDependent.setLastName(mTieLastName.toString().trim());
+        addDependent.setPhotoUri(mTiePhoto.toString().trim());
+        addDependent.setBirthday(mTieBirthday.toString().trim());
+        addDependent.setHomeAddress(mTieHomeAddress.toString().trim());
 
+        if (mLatLngSelected != null) {
+            addDependent.setLatitude(mLatLngSelected.latitude);
+            addDependent.setLongitude(mLatLngSelected.longitude);
+        } else {
+            Toast.makeText(this, "Debe ingresar ubicación", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //Enviar al servicio
     }
 
 
