@@ -22,6 +22,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.ramos.fredy.goschool.R;
 import com.ramos.fredy.goschool.base.BaseActivity;
+import com.ramos.fredy.goschool.bus.LocationSelectedEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,7 +93,10 @@ public class DependentLocationActivity extends BaseActivity implements OnMapRead
 
     @OnClick(R.id.fab_location_dependent_save)
     public void onSaveLocation() {
-        Toast.makeText(this, mMap.getCameraPosition().target.latitude + "", Toast.LENGTH_SHORT).show();
+        CameraPosition cameraPosition = mMap.getCameraPosition();
+        EventBus.getDefault().postSticky(new LocationSelectedEvent(cameraPosition.target));
+        finish();
+
     }
 
     private void updateLocation(LatLng latLng) {
