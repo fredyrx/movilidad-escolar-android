@@ -2,14 +2,17 @@ package com.ramos.fredy.goschool.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ramos.fredy.goschool.models.io.LoginBody;
+import com.ramos.fredy.goschool.models.io.LoginResponse;
 
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /**
@@ -18,7 +21,7 @@ import retrofit2.http.POST;
 
 public class ApiManager {
 
-    private static final String API_URL = "";
+    private static final String API_URL = "http://IP/api/";
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
@@ -55,6 +58,9 @@ public class ApiManager {
     }
 
     public interface ApiClient{
+
+        @POST("/auth/login/client")
+        Call<LoginResponse> login(@Body LoginBody loginBody);
 
     }
 
