@@ -21,7 +21,7 @@ import retrofit2.http.POST;
 
 public class ApiManager {
 
-    private static final String API_URL = "http://IP/api/";
+    private static final String API_URL = "http://192.168.1.7:8080/api/";
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
@@ -59,7 +59,7 @@ public class ApiManager {
 
     public interface ApiClient{
 
-        @POST("/auth/login/client")
+        @POST("auth/login/client")
         Call<LoginResponse> login(@Body LoginBody loginBody);
 
     }

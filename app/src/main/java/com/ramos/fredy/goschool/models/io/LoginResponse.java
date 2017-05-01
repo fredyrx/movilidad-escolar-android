@@ -12,7 +12,7 @@ public class LoginResponse {
     private int status;
 
     @SerializedName("data")
-    private User user;
+    private Object user;
 
     private String error;
     private String message;
@@ -25,11 +25,11 @@ public class LoginResponse {
         this.status = status;
     }
 
-    public User getUser() {
+    public Object getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Object user) {
         this.user = user;
     }
 
