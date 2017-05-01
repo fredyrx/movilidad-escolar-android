@@ -2,19 +2,15 @@ package com.ramos.fredy.goschool.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -25,7 +21,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.ramos.fredy.goschool.R;
 import com.ramos.fredy.goschool.bus.LocationSelectedEvent;
 import com.ramos.fredy.goschool.dialog.DateDialog;
-import com.ramos.fredy.goschool.model.AddDependent;
+import com.ramos.fredy.goschool.models.AddDependent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -102,6 +98,26 @@ public class AddDependentActivity extends AppCompatActivity implements DatePicke
         dialog.show(getSupportFragmentManager(), "DATEPICKER");
     }
 
+    @OnClick(R.id.fab_dependent_save)
+    public void saveDependent() {
+        AddDependent addDependent = new AddDependent();
+        addDependent.setName(mTieName.toString().trim());
+        addDependent.setLastName(mTieLastName.toString().trim());
+        addDependent.setPhotoUri(mTiePhoto.toString().trim());
+        addDependent.setBirthday(mTieBirthday.toString().trim());
+        addDependent.setHomeAddress(mTieHomeAddress.toString().trim());
+
+        if (mLatLngSelected != null) {
+            addDependent.setLatitude(mLatLngSelected.latitude);
+            addDependent.setLongitude(mLatLngSelected.longitude);
+        } else {
+            Toast.makeText(this, "Debe ingresar ubicación", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //Enviar al servicio
+    }
+
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onSelectedLocationEvent(LocationSelectedEvent event) {
         event = EventBus.getDefault().removeStickyEvent(LocationSelectedEvent.class);
@@ -171,26 +187,6 @@ public class AddDependentActivity extends AppCompatActivity implements DatePicke
                     .into(mImgPhoto);
         }
     }
-
-    private void saveDependent() {
-        AddDependent addDependent = new AddDependent();
-        addDependent.setName(mTieName.toString().trim());
-        addDependent.setLastName(mTieLastName.toString().trim());
-        addDependent.setPhotoUri(mTiePhoto.toString().trim());
-        addDependent.setBirthday(mTieBirthday.toString().trim());
-        addDependent.setHomeAddress(mTieHomeAddress.toString().trim());
-
-        if (mLatLngSelected != null) {
-            addDependent.setLatitude(mLatLngSelected.latitude);
-            addDependent.setLongitude(mLatLngSelected.longitude);
-        } else {
-            Toast.makeText(this, "Debe ingresar ubicación", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        //Enviar al servicio
-    }
-
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

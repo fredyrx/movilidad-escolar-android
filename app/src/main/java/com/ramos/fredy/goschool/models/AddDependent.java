@@ -1,4 +1,4 @@
-package com.ramos.fredy.goschool.model;
+package com.ramos.fredy.goschool.models;
 
 /**
  * Created by kenok on 30/04/2017.
