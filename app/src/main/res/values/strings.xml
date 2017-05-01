@@ -6,4 +6,5 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_add_dependent">AddDependentActivity</string>
     <string name="title_activity_dependent_location">Dependent Location</string>
+    <string name="label_location">Seleccionar ubicación</string>
 </resources>

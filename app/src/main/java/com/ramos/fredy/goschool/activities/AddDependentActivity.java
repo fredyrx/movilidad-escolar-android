@@ -1,5 +1,6 @@
 package com.ramos.fredy.goschool.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -49,7 +50,7 @@ public class AddDependentActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_dependent_location)
     public void takeLocation() {
-
+        startActivity(new Intent(this, DependentLocationActivity.class));
     }
 
     private void saveDependent() {
