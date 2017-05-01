@@ -4,7 +4,11 @@
     <string name="title_activity_client_sign_up">Client SignUp</string>
     <string name="title_activity_driver_sign_up">Driver SignUp</string>
     <string name="title_activity_login">Login</string>
-    <string name="title_activity_add_dependent">AddDependentActivity</string>
+    <string name="title_activity_add_dependent">Add Dependent</string>
     <string name="title_activity_dependent_location">Dependent Location</string>
     <string name="label_location">Seleccionar ubicación</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_home_client">Request Service</string>
 </resources>
