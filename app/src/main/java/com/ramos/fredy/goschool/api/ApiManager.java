@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ramos.fredy.goschool.models.io.LoginBody;
 import com.ramos.fredy.goschool.models.io.LoginResponse;
+import com.ramos.fredy.goschool.models.io.SchoolResponse;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -61,6 +63,9 @@ public class ApiManager {
 
         @POST("auth/login/client")
         Call<LoginResponse> login(@Body LoginBody loginBody);
+
+        @GET("schools")
+        Call<SchoolResponse> schools();
 
     }
 
