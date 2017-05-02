@@ -22,7 +22,7 @@ import com.ramos.fredy.goschool.R;
 import com.ramos.fredy.goschool.base.BaseNavigationDrawerActivity;
 import com.ramos.fredy.goschool.bus.LocationSelectedEvent;
 import com.ramos.fredy.goschool.dialog.DateDialog;
-import com.ramos.fredy.goschool.models.AddDependent;
+import com.ramos.fredy.goschool.models.Dependent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -108,7 +108,7 @@ public class AddDependentActivity extends BaseNavigationDrawerActivity implement
 
     @OnClick(R.id.fab_dependent_save)
     public void saveDependent() {
-        AddDependent addDependent = new AddDependent();
+        Dependent addDependent = new Dependent();
         addDependent.setName(mTieName.toString().trim());
         addDependent.setLastName(mTieLastName.toString().trim());
         addDependent.setPhotoUri(mTiePhoto.toString().trim());

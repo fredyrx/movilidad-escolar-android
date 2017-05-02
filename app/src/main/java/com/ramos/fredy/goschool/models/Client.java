@@ -13,13 +13,13 @@ public class Client extends User {
     private String email;
     private String phoneNumber;
     private String password;
-    private List<AddDependent> dependant;
+    private List<Dependent> dependant;
 
-    public List<AddDependent> getDependant() {
+    public List<Dependent> getDependant() {
         return dependant;
     }
 
-    public void setDependant(List<AddDependent> dependant) {
+    public void setDependant(List<Dependent> dependant) {
         this.dependant = dependant;
     }
 

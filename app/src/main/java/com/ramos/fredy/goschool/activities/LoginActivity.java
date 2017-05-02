@@ -11,7 +11,6 @@ import android.widget.Button;
 
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.Toast;
 
 
@@ -19,8 +18,6 @@ import com.ramos.fredy.goschool.App;
 import com.ramos.fredy.goschool.R;
 
 import com.ramos.fredy.goschool.api.ApiManager;
-import com.ramos.fredy.goschool.models.AddDependent;
-import com.ramos.fredy.goschool.models.Client;
 import com.ramos.fredy.goschool.models.io.DriverLoginResponse;
 import com.ramos.fredy.goschool.models.io.LoginBody;
 import com.ramos.fredy.goschool.models.io.LoginResponse;
