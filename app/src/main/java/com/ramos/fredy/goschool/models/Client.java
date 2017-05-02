@@ -12,6 +12,7 @@ public class Client extends User {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private String password;
     private List<AddDependent> dependant;
 
     public List<AddDependent> getDependant() {
@@ -60,5 +61,13 @@ public class Client extends User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

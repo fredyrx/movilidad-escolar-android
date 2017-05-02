@@ -2,6 +2,9 @@ package com.ramos.fredy.goschool.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ramos.fredy.goschool.models.Client;
+import com.ramos.fredy.goschool.models.io.ClientResponse;
+import com.ramos.fredy.goschool.models.io.DriverLoginResponse;
 import com.ramos.fredy.goschool.models.io.LoginBody;
 import com.ramos.fredy.goschool.models.io.LoginResponse;
 
@@ -21,7 +24,7 @@ import retrofit2.http.POST;
 
 public class ApiManager {
 
-    private static final String API_URL = "http://192.168.1.7:8080/api/";
+    private static final String API_URL = "http://192.168.8.231:8080/api/";
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
@@ -62,6 +65,11 @@ public class ApiManager {
         @POST("auth/login/client")
         Call<LoginResponse> login(@Body LoginBody loginBody);
 
+        @POST("auth/login/driver")
+        Call<DriverLoginResponse> driverLogin(@Body LoginBody loginBody);
+
+        @POST("clients")
+        Call<ClientResponse> clientRegister(@Body Client clientBody);
     }
 
 

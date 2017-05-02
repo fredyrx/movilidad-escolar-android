@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 
@@ -18,7 +19,9 @@ import com.ramos.fredy.goschool.App;
 import com.ramos.fredy.goschool.R;
 
 import com.ramos.fredy.goschool.api.ApiManager;
+import com.ramos.fredy.goschool.models.AddDependent;
 import com.ramos.fredy.goschool.models.Client;
+import com.ramos.fredy.goschool.models.io.DriverLoginResponse;
 import com.ramos.fredy.goschool.models.io.LoginBody;
 import com.ramos.fredy.goschool.models.io.LoginResponse;
 
@@ -79,16 +82,24 @@ public class LoginActivity extends AppCompatActivity {
 
         RadioButton radioButtonSelected = (RadioButton) findViewById(selectedRadioButtonID);
 
+
         if (selectedRadioButtonID == -1) {
             Toast.makeText(LoginActivity.this, "Seleccionar tipo de usuario(Client/Driver)", Toast.LENGTH_SHORT).show();
         } else {
+
+            // Cuando algun radioButton esta seteado
             LoginBody loginBody = new LoginBody();
             loginBody.setUsername(mUsernameText.getText().toString());
             loginBody.setPassword(mPasswordText.getText().toString());
 
-            clientAuth(loginBody);
-
+            if(selectedRadioButtonID == mClientRadioB.getId()){
+                clientAuth(loginBody);
+            }
+            else if(selectedRadioButtonID == mDriverRadioB.getId()){
+                driverAuth(loginBody);
+            }
         }
+
     }
 
     private void clientAuth(final LoginBody loginBody){
@@ -131,6 +142,44 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void DriverAuth(LoginBody loginBody){}
+    private void driverAuth(LoginBody loginBody){
+        ApiManager.ApiClient client = ApiManager.createService(ApiManager.ApiClient.class);
+
+        Call<DriverLoginResponse> call = client.driverLogin(loginBody);
+
+
+        call.enqueue(new Callback<DriverLoginResponse>() {
+            @Override
+            public void onResponse(Call<DriverLoginResponse> call, Response<DriverLoginResponse> response) {
+
+                DriverLoginResponse loginResponse = response.body();
+
+                if (response.isSuccessful()) {
+
+                    if (loginResponse.getError().isEmpty()) {
+
+                        //Si devuelve los datos ok
+
+                        App.getInstance().setDriverUser(loginResponse.getDriver());
+                        startActivity(new Intent(LoginActivity.this, RequestServiceActivity.class));
+                        Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    } else {
+                        Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    Toast.makeText(LoginActivity.this, "algo salio mal", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<DriverLoginResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

@@ -26,6 +26,7 @@
                 android:id="@+id/username_login_text_input_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
                 android:hint="Email"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -36,6 +37,7 @@
                 android:id="@+id/password_login_text_input_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
 
