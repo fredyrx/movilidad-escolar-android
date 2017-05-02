@@ -2,7 +2,6 @@ package com.ramos.fredy.goschool;
 
 import android.app.Application;
 
-import com.ramos.fredy.goschool.api.ApiManager;
 import com.ramos.fredy.goschool.models.Client;
 import com.ramos.fredy.goschool.models.Driver;
 

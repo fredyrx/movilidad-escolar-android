@@ -4,20 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.design.widget.TextInputEditText;
+
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+
 import com.ramos.fredy.goschool.App;
 import com.ramos.fredy.goschool.R;
+
 import com.ramos.fredy.goschool.api.ApiManager;
 import com.ramos.fredy.goschool.models.Client;
 import com.ramos.fredy.goschool.models.io.LoginBody;
 import com.ramos.fredy.goschool.models.io.LoginResponse;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -87,10 +91,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void clientAuth(LoginBody loginBody){
+    private void clientAuth(final LoginBody loginBody){
         ApiManager.ApiClient client = ApiManager.createService(ApiManager.ApiClient.class);
 
         Call<LoginResponse> call = client.login(loginBody);
+
 
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -100,10 +105,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
 
-                    if (!loginResponse.getError().isEmpty()) {
+                    if (loginResponse.getError().isEmpty()) {
 
                         //Si devuelve los datos ok
-                        App.getInstance().setClientUser((Client) loginResponse.getUser());
+
+                        App.getInstance().setClientUser(loginResponse.getClient());
+                        startActivity(new Intent(LoginActivity.this, RequestServiceActivity.class));
                         Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
 

@@ -1,6 +1,7 @@
 package com.ramos.fredy.goschool.models.io;
 
 import com.google.gson.annotations.SerializedName;
+import com.ramos.fredy.goschool.models.Client;
 import com.ramos.fredy.goschool.models.User;
 
 /**
@@ -12,7 +13,7 @@ public class LoginResponse {
     private int status;
 
     @SerializedName("data")
-    private Object user;
+    private Client client;
 
     private String error;
     private String message;
@@ -25,12 +26,12 @@ public class LoginResponse {
         this.status = status;
     }
 
-    public Object getUser() {
-        return user;
+    public Client getClient() {
+        return client;
     }
 
-    public void setUser(Object user) {
-        this.user = user;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public String getError() {

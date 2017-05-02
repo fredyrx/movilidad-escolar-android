@@ -9,7 +9,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.model.LatLng;
 import com.ramos.fredy.goschool.R;
+import com.ramos.fredy.goschool.base.BaseNavigationDrawerActivity;
 import com.ramos.fredy.goschool.bus.LocationSelectedEvent;
 import com.ramos.fredy.goschool.dialog.DateDialog;
 import com.ramos.fredy.goschool.models.AddDependent;
@@ -37,7 +38,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AddDependentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class AddDependentActivity extends BaseNavigationDrawerActivity implements DatePickerDialog.OnDateSetListener {
 
     @BindView(R.id.toolbar)                     Toolbar toolbar;
     @BindView(R.id.til_dependent_name)          TextInputLayout mTilName;
@@ -60,14 +61,21 @@ public class AddDependentActivity extends AppCompatActivity implements DatePicke
     private String mCurrentPhotoPath;
     private LatLng mLatLngSelected;
 
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dependent);
-        setSupportActionBar(toolbar);
+
+        actionBar = getActionBarToolbar();
 
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected int getSelfNavDrawerItem() {
+        return R.id.nav_add_dependent;
     }
 
     @Override
