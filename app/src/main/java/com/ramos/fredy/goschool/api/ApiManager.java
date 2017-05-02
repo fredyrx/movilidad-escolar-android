@@ -3,8 +3,10 @@ package com.ramos.fredy.goschool.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ramos.fredy.goschool.models.Client;
+import com.ramos.fredy.goschool.models.Driver;
 import com.ramos.fredy.goschool.models.io.ClientResponse;
 import com.ramos.fredy.goschool.models.io.DriverLoginResponse;
+import com.ramos.fredy.goschool.models.io.DriverResponse;
 import com.ramos.fredy.goschool.models.io.LoginBody;
 import com.ramos.fredy.goschool.models.io.LoginResponse;
 
@@ -70,6 +72,12 @@ public class ApiManager {
 
         @POST("clients")
         Call<ClientResponse> clientRegister(@Body Client clientBody);
+
+        @POST("drivers")
+        Call<DriverResponse> driverRegister(@Body Driver driverBody);
+
+        @POST("clients/{client_id}/dependant")
+        Call<DriverResponse> driverRegister(@Body Dependent driverBody);
     }
 
 

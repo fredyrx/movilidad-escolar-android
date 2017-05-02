@@ -5,7 +5,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.Locale;
 
 /**
- * Created by kenok on 30/04/2017.
+ * Created by fredy on 30/04/2017.
  */
 
 public class LocationSelectedEvent {

@@ -78,6 +78,10 @@
         <activity
             android:name=".activities.RequestServiceActivity"
             android:label="@string/title_activity_home_client"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ManageRequestServiceActivity"
+            android:label="@string/title_activity_manage_request_service"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -15,6 +15,8 @@ public class Driver {
     private String licenseId;
     private String carModel;
 
+    public Driver(){}
+
     public Integer getId() {
         return id;
     }
@@ -79,7 +81,6 @@ public class Driver {
         this.carModel = carModel;
     }
 
-    protected Driver(){}
 
     public Driver(Integer id, String name, String lastName, String email, String password, String phoneNumber, String licenseId, String carModel) {
         this.id = id;

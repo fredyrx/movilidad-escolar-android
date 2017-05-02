@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.ramos.fredy.goschool.R;
 import com.ramos.fredy.goschool.activities.AddDependentActivity;
+import com.ramos.fredy.goschool.activities.ManageRequestServiceActivity;
 import com.ramos.fredy.goschool.activities.RequestServiceActivity;
 
 public class BaseNavigationDrawerActivity extends AppCompatActivity {
@@ -82,6 +83,7 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
     }
 
     private void goToNavDrawerItem(int item) {
+        // Es para todos navigation
         switch (item) {
             case R.id.nav_req_service:
                 startActivity(new Intent(this, RequestServiceActivity.class));
@@ -89,6 +91,10 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
                 break;
             case R.id.nav_add_dependent:
                 startActivity(new Intent(this, AddDependentActivity.class));
+                finish();
+                break;
+            case R.id.nav_manage_request_service:
+                startActivity(new Intent(this, ManageRequestServiceActivity.class));
                 finish();
                 break;
         }

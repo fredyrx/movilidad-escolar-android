@@ -161,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
                         //Si devuelve los datos ok
 
                         App.getInstance().setDriverUser(loginResponse.getDriver());
-                        startActivity(new Intent(LoginActivity.this, RequestServiceActivity.class));
+                        startActivity(new Intent(LoginActivity.this, ManageRequestServiceActivity.class));
                         Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
 

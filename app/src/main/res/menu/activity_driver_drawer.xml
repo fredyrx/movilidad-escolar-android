@@ -3,8 +3,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_req_service2"
-            android:title="Option 1" />
+            android:id="@+id/nav_manage_request_service"
+            android:title="Manage services" />
         <item
             android:id="@+id/nav_add_dependent2"
             android:title="Option 2" />
