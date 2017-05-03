@@ -18,11 +18,16 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.model.LatLng;
+import com.ramos.fredy.goschool.App;
 import com.ramos.fredy.goschool.R;
+import com.ramos.fredy.goschool.api.ApiManager;
 import com.ramos.fredy.goschool.base.BaseNavigationDrawerActivity;
 import com.ramos.fredy.goschool.bus.LocationSelectedEvent;
 import com.ramos.fredy.goschool.dialog.DateDialog;
+import com.ramos.fredy.goschool.models.Client;
 import com.ramos.fredy.goschool.models.Dependent;
+import com.ramos.fredy.goschool.models.io.ClientResponse;
+import com.ramos.fredy.goschool.models.io.DependentResponse;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -37,6 +42,9 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddDependentActivity extends BaseNavigationDrawerActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -109,15 +117,49 @@ public class AddDependentActivity extends BaseNavigationDrawerActivity implement
     @OnClick(R.id.fab_dependent_save)
     public void saveDependent() {
         Dependent addDependent = new Dependent();
-        addDependent.setName(mTieName.toString().trim());
-        addDependent.setLastName(mTieLastName.toString().trim());
-        addDependent.setPhotoUri(mTiePhoto.toString().trim());
-        addDependent.setBirthday(mTieBirthday.toString().trim());
-        addDependent.setHomeAddress(mTieHomeAddress.toString().trim());
+        addDependent.setName(mTieName.getText().toString().trim());
+        addDependent.setLastName(mTieLastName.getText().toString().trim());
+        addDependent.setPhotoUri(mTiePhoto.getText().toString().trim());
+        addDependent.setBirthday(mTieBirthday.getText().toString().trim());
+        addDependent.setHomeAddress(mTieHomeAddress.getText().toString().trim());
+
+        Client clientOwer = App.getInstance().getClientUser();
 
         if (mLatLngSelected != null) {
             addDependent.setLatitude(mLatLngSelected.latitude);
             addDependent.setLongitude(mLatLngSelected.longitude);
+
+            // enviar a api
+            ApiManager.ApiClient client = ApiManager.createService(ApiManager.ApiClient.class);
+
+            Call<DependentResponse> call = client.addDependantForClient(String.valueOf(clientOwer.getId()) ,addDependent);
+
+            call.enqueue(new Callback<DependentResponse>() {
+                @Override
+                public void onResponse(Call<DependentResponse> call, Response<DependentResponse> response) {
+                    DependentResponse res = response.body();
+
+                    if(response.isSuccessful()){
+                        if(res.getError().isEmpty()){
+                            // Response OK
+                            startActivity(new Intent(AddDependentActivity.this, AddDependentActivity.class));
+                            Toast.makeText(AddDependentActivity.this, res.getMessage(), Toast.LENGTH_SHORT).show();
+                            finish();
+                        }else{
+                            // Error controlado
+                            Toast.makeText(AddDependentActivity.this, res.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(AddDependentActivity.this, "Algo salió mal", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<DependentResponse> call, Throwable t) {
+                    Toast.makeText(AddDependentActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
         } else {
             Toast.makeText(this, "Debe ingresar ubicación", Toast.LENGTH_SHORT).show();
             return;
@@ -199,7 +241,7 @@ public class AddDependentActivity extends BaseNavigationDrawerActivity implement
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-        String fecha = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month, year);
+        String fecha = String.format("%04d-%02d-%02d", year, month, dayOfMonth);
         mTieBirthday.setText(fecha);
     }
 }

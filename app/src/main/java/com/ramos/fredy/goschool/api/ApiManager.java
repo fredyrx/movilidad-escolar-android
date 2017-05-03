@@ -6,6 +6,7 @@ import com.ramos.fredy.goschool.models.Client;
 import com.ramos.fredy.goschool.models.Dependent;
 import com.ramos.fredy.goschool.models.Driver;
 import com.ramos.fredy.goschool.models.io.ClientResponse;
+import com.ramos.fredy.goschool.models.io.DependentResponse;
 import com.ramos.fredy.goschool.models.io.DriverLoginResponse;
 import com.ramos.fredy.goschool.models.io.DriverResponse;
 import com.ramos.fredy.goschool.models.io.LoginBody;
@@ -79,7 +80,7 @@ public class ApiManager {
         Call<DriverResponse> driverRegister(@Body Driver driverBody);
 
         @POST("clients/{client_id}/dependant")
-        Call<DriverResponse> driverRegister(@Path("client_id") String client_id, @Body Dependent dependentBody);
+        Call<DependentResponse> addDependantForClient(@Path("client_id") String client_id, @Body Dependent dependentBody);
     }
 
 
