@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +33,7 @@ public class RequestServiceActivity extends BaseNavigationDrawerActivity impleme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_service);
-
+        ButterKnife.bind(this);
         actionBar = getActionBarToolbar();
 
         schoolAdapter = new SchoolAdapter(new ArrayList<School>(), this, this);

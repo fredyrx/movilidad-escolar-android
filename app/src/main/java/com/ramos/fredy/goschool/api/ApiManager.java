@@ -1,5 +1,7 @@
 package com.ramos.fredy.goschool.api;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ramos.fredy.goschool.models.Client;
@@ -57,7 +59,13 @@ public class ApiManager {
         builder.addConverterFactory(GsonConverterFactory.create(gson));
     }
     private static void setupClient() {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+
+                Log.d("XINO",message);
+            }
+        });
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
