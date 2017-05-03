@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                         //Si devuelve los datos ok
 
                         App.getInstance().setClientUser(loginResponse.getClient());
-                        startActivity(new Intent(LoginActivity.this, RequestServiceActivity.class));
+                        startActivity(new Intent(LoginActivity.this, ClientActivity.class));
                         Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
 

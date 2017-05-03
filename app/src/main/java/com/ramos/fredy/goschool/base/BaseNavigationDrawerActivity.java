@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.ramos.fredy.goschool.R;
 import com.ramos.fredy.goschool.activities.AddDependentActivity;
+import com.ramos.fredy.goschool.activities.ClientActivity;
 import com.ramos.fredy.goschool.activities.ManageRequestServiceActivity;
 import com.ramos.fredy.goschool.activities.RequestServiceActivity;
 
@@ -95,6 +96,10 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
                 break;
             case R.id.nav_manage_request_service:
                 startActivity(new Intent(this, ManageRequestServiceActivity.class));
+                finish();
+                break;
+            case R.id.nav_clie_service:
+                startActivity(new Intent(this, ClientActivity.class));
                 finish();
                 break;
         }

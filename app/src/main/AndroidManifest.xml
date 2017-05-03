@@ -89,13 +89,16 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-        <service
-            android:name=".fcm.FCMMessage">
+        <service android:name=".fcm.FCMMessage">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".activities.ClientActivity"
+            android:label="@string/title_activity_client"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

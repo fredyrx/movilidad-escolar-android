@@ -142,7 +142,8 @@ public class AddDependentActivity extends BaseNavigationDrawerActivity implement
                     if(response.isSuccessful()){
                         if(res.getError().isEmpty()){
                             // Response OK
-                            startActivity(new Intent(AddDependentActivity.this, AddDependentActivity.class));
+                            App.getInstance().getClientUser().getDependant().add(res.getDependent());
+                            startActivity(new Intent(AddDependentActivity.this, ClientActivity.class));
                             Toast.makeText(AddDependentActivity.this, res.getMessage(), Toast.LENGTH_SHORT).show();
                             finish();
                         }else{
