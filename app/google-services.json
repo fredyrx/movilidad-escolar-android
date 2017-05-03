@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "525048376168",
+    "firebase_url": "https://movilidad-escolar-android.firebaseio.com",
+    "project_id": "movilidad-escolar-android",
+    "storage_bucket": "movilidad-escolar-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525048376168:android:61cc15e4b31b17ca",
+        "android_client_info": {
+          "package_name": "com.ramos.fredy.goschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525048376168-3rig2bi4g7fvpqu7squsuf7tqop904v1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ramos.fredy.goschool",
+            "certificate_hash": "07bc6450ac79d0e9b52aa0804bc7fdc63299cfa5"
+          }
+        },
+        {
+          "client_id": "525048376168-3pqpvkb1h41mjg8eocjta2camvj4vam7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuLQ2VxPevtew0OTuKPIjPYPoSfYP2WCI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525048376168-3pqpvkb1h41mjg8eocjta2camvj4vam7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
