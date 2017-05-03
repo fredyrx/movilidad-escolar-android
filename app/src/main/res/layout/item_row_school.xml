@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Cardview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="2dp"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="false">
+
+    <RelativeLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_school_Logo"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@mipmap/ic_bus_launcher"
+            android:layout_marginRight="8dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/txv_school_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/img_school_Logo"
+            tools:text="COLEGIO"/>
+
+        <TextView
+            android:id="@+id/txv_school_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/img_school_Logo"
+            android:layout_below="@+id/txv_school_name"
+            tools:text="DIRECCIÓN COLEGIO"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Cardview>
+

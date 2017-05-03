@@ -11,6 +11,7 @@ import com.ramos.fredy.goschool.models.io.DriverLoginResponse;
 import com.ramos.fredy.goschool.models.io.DriverResponse;
 import com.ramos.fredy.goschool.models.io.LoginBody;
 import com.ramos.fredy.goschool.models.io.LoginResponse;
+import com.ramos.fredy.goschool.models.io.SchoolResponse;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +21,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -81,6 +83,10 @@ public class ApiManager {
 
         @POST("clients/{client_id}/dependant")
         Call<DependentResponse> addDependantForClient(@Path("client_id") String client_id, @Body Dependent dependentBody);
+
+        @GET("schools")
+        Call<SchoolResponse> schools();
+
     }
 
 
